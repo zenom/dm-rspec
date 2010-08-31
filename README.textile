@@ -15,9 +15,9 @@ Post.should has_property :title, String, :default => "", :required => true
 Comment.should belongs_to(:post)
 Post.has_many(:comments)
 Post.has_one(:user)
+Post.should has_and_belongs_to_many(:tags)
 
 - Still a WIP
-Post.should has_and_belongs_to_many(:tags)
 Post.should has_timestamps      # created_at, updated_at
 Post.should has_timestamps(:at) # created_at, updated_at
 Post.should has_timestamps(:on) # created_on, updated_on
