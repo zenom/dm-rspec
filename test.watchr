@@ -29,7 +29,7 @@ end
 # Watchr Rules
 # --------------------------------------------------
 watch( '^spec/spec_helper\.rb'        ) {     run_all_specs }
-watch( '^lib/spec/matchers/dm/(.*)\.rb' ) { |m| run_single_spec("spec/dm/%s_spec.rb" % m[1])}
+watch( '^lib/rspec/matchers/dm/(.*)\.rb' ) { |m| run_single_spec("spec/dm/%s_spec.rb" % m[1])}
 watch( '^spec/.*_spec\.rb'       ) { |m| run_single_spec(m[0]) }
 
  
