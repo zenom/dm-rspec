@@ -12,11 +12,11 @@ Use these matchers in your specs. All the matchers you should call on model clas
 
 <pre>
 Post.should has_property :title, String, :default => "", :required => true
+Comment.should belongs_to(:post)
 
 - Still a WIP
 Post.should has_many(:comments)
 Post.should has_and_belongs_to_many(:tags)
-Post.should belongs_to(:category)
 Post.should has_timestamps      # created_at, updated_at
 Post.should has_timestamps(:at) # created_at, updated_at
 Post.should has_timestamps(:on) # created_on, updated_on
