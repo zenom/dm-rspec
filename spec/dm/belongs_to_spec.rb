@@ -1,22 +1,6 @@
 require File.join(File.dirname(__FILE__), '..', "spec_helper")
 require "rspec/matchers/dm/belongs_to"
 
-class Post
-  include DataMapper::Resource
-  property :id, Serial
-  property :title, String, :default=> ""
-
-  has n, :comments
-end
-
-class Comment
-  include DataMapper::Resource
-  property :id, Serial
-  
-  belongs_to :post
-end
-
-
 describe DataMapperMatchers::BelongsTo do
   
   it "should pass for for working association" do

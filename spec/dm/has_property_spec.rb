@@ -1,13 +1,6 @@
 require File.join(File.dirname(__FILE__), '..', "spec_helper")
 require "rspec/matchers/dm/has_property"
 
-class Post
-  include DataMapper::Resource
-  property :id, Serial
-  property :title, String, :default=> ""
-
-end
-
 describe DataMapperMatchers::HasProperty do
   it "should pass for missing options" do
     lambda { Post.should has_property :title, String, :default => "", :required => true }.should fail
