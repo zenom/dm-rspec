@@ -20,7 +20,7 @@ spec = Gem::Specification.new do |s|
   s.email = EMAIL
   s.homepage = HOMEPAGE
   s.require_path = 'lib'
-  s.files = %w(LICENSE README.textile Rakefile) + Dir.glob("{lib,spec,app,public,stubs}/**/*")
+  s.files = %w(LICENSE README.textile Rakefile) + Dir.glob("{lib,rspec,spec,app,public,stubs}/**/*")
 end
 
 Rake::GemPackageTask.new(spec) do |pkg|
@@ -48,6 +48,6 @@ task :uninstall => [ :clobber ] do
   sudo_gem "uninstall #{GEM_NAME} -v#{GEM_VERSION} -Ix"
 end
 
-require 'spec/rake/spectask'
-desc 'Default: run spec examples'
-task :default => 'spec'
+#require 'spec/rake/spectask'
+#desc 'Default: run rspec examples'
+#task :default => 'rspec'

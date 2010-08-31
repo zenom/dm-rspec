@@ -16,7 +16,8 @@ def run(cmd)
 end
 
 def run_all_specs
-  run "rspec spec/"
+  system('clear')
+  run "rspec ./spec"
 end
 
 def run_single_spec *spec

@@ -37,15 +37,16 @@ class Post
   property :id, Serial
   property :title, String, :default=> ""
 
-  has 1, :user
+  belongs_to :user
   has n, :comments
+  has n, :tags, :through => Resource
 end
 
 class User
  include DataMapper::Resource
  property :id, Serial
  
- belongs_to :post
+ has n, :posts
 end
 
 class Comment
@@ -53,4 +54,10 @@ class Comment
   property :id, Serial
   
   belongs_to :post
+end
+
+class Tag
+  include DataMapper::Resource
+  property :id, Serial
+  has n, :posts, :through => Resource
 end
