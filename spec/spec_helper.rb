@@ -3,7 +3,7 @@ require "rspec"
 require "dm-core"
 require "data_mapper"
 
-DataMapper.setup(:default, "sqlite3::memory")
+DataMapper.setup(:default, "sqlite3::memory:")
 
 # must be initialized for include
 module DataMapperMatchers

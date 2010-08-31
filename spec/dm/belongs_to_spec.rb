@@ -6,6 +6,14 @@ class Post
   property :id, Serial
   property :title, String, :default=> ""
 
+  has n, :comments
+end
+
+class Comment
+  include DataMapper::Resource
+  property :id, Serial
+  
+  belongs_to :post
 end
 
 describe DataMapperMatchers::HasProperty do
