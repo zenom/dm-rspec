@@ -36,6 +36,9 @@ class Post
   include DataMapper::Resource
   property :id, Serial
   property :title, String, :default=> ""
+  
+  property :created_at, Date
+  property :updated_at, Date
 
   belongs_to :user
   has n, :comments
