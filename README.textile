@@ -11,7 +11,7 @@ Based off the dm-spec matchers by "Botanicus":http://github.com/botanicus/dm-spe
 Use these matchers in your specs. All the matchers you should call on model class, not on model instance.
 
 <pre>
-Post.should has_property :title, String, :default => "", :required => true
+Post.should has_property :title, String
 Comment.should belongs_to(:post)
 Post.has_many(:comments)
 Post.has_one(:user)
