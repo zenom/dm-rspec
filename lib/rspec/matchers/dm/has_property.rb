@@ -1,27 +1,24 @@
 module DataMapperMatchers
   class HasProperty 
 
-    def initialize(expected, *macro_info)
+    def initialize(expected, field_type)
       @expected = expected
-      @options  = *macro_info
+      @field_type = field_type
     end
     
     # Post.should has_property :title, String, :required => true, :default => ""
     def matches?(model)
-      key_type, options = @options
       @model = model
       field = @model.properties[@expected.to_sym]
       
-      if options.nil? || options.empty?
-        RSpec::Expectations.fail_with "field options must be specified"
+      if @field_type.nil?
+        RSpec::Expectations.fail_with "you must specify a property type (String, Integer)"
       elsif @expected.nil?
         RSpec::Expectations.fail_with "expected #{model.to_s} to have field #{@expected}"
-      elsif key_type != field.field.class
-        RSpec::Expectations.fail_with "expected #{field.field} to have type of #{key_type.to_s} but has #{field.field.class.to_s}"
+      elsif @field_type != field.field.class
+        RSpec::Expectations.fail_with "expected #{field.field} to have type of #{@field_type.to_s} but has #{field.field.class.to_s}"
       else
-        options_valid = options.all? { |key,value| field.send(key) == value }
-        return options_valid ? true :
-                               RSpec::Expectations.fail_with("expected model to have options #{options.inspect} on field #{field.field}")
+        true
       end
     end
     
@@ -31,7 +28,7 @@ module DataMapperMatchers
         
   end
   
-  def has_property(expected, *options)
-    HasProperty.new(expected, *options)
+  def has_property(expected, field_type)
+    HasProperty.new(expected, field_type)
   end
 end

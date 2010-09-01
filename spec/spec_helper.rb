@@ -35,7 +35,8 @@ end
 class Post
   include DataMapper::Resource
   property :id, Serial
-  property :title, String, :default=> "", :length => (100..500)
+  property :title, String
+  property :basic_field, String
   property :created_at, Date
   property :updated_at, Date
 
@@ -44,7 +45,7 @@ class Post
   has n, :tags, :through => Resource
   
   validates_uniqueness_of :title#, :scope => :user
-  #validates_length_of :title, :within => (100.500)
+  validates_length_of :basic_field, :within => (100..500)
 end
 
 class User
