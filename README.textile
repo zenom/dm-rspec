@@ -16,10 +16,12 @@ Comment.should belongs_to(:post)
 Post.has_many(:comments)
 Post.has_one(:user)
 Post.should has_and_belongs_to_many(:tags)
-
-- Still a WIP
 Post.should has_timestamps      # created_at, updated_at
 Post.should has_timestamps(:at) # created_at, updated_at
 Post.should has_timestamps(:on) # created_on, updated_on
 Post.should has_timestamps(:created_at)
 </pre>
+
+h1. Still Working On
+- has_validation
+- has_key

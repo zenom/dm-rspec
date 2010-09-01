@@ -35,14 +35,16 @@ end
 class Post
   include DataMapper::Resource
   property :id, Serial
-  property :title, String, :default=> ""
-  
+  property :title, String, :default=> "", :length => (100..500)
   property :created_at, Date
   property :updated_at, Date
 
   belongs_to :user
   has n, :comments
   has n, :tags, :through => Resource
+  
+  validates_uniqueness_of :title#, :scope => :user
+  #validates_length_of :title, :within => (100.500)
 end
 
 class User
